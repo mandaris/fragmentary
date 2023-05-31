@@ -467,3 +467,6 @@ audio {
     width: 100%;
 }
 
+.post-body {
+    display: inline-block;
+}
