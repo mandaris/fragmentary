@@ -141,30 +141,40 @@ article div img {
 article footer {
     display: grid;
     grid-template-columns: 2;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "leftside rightside"
+        "author author";
     margin: 0em 0em 0em 0em;
     padding: 0em;
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
 }
 
+/* 
 article footer p {
     margin-bottom: 0;
     margin-top: 0;
 }
+ */
 
 .left-column {
     grid-column: 1;
     text-align: left;
+    grid-area: leftside;
 }
 
 .right-column {
     grid-column: 2;
     text-align: right;
+    grid-area: rightside;
 }
 
+/* 
 article footer details {
     display: none;
 }
+ */
 
 article:last-of-type {
     margin-bottom: inherit;
@@ -469,4 +479,18 @@ audio {
 
 .post-body {
     display: inline-block;
+}
+
+.author {
+    grid-area: author;
+    display: grid;
+    grid-gap: 1rem;
+}
+
+.author-image {
+    grid-column: 1;
+}
+
+.author-bio {
+    grid-column: 2;
 }

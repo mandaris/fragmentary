@@ -7,9 +7,15 @@
 <title>{{ .Site.Title }}</title>
 <meta property="og:title" content="{{ .Site.Title }}" />
 <meta itemprop="name" content="{{ .Site.Title }}" />
-<meta name="description" content="{{ .Params.Description | safeHTML }}" />
-<meta property="og:description" content="{{ .Params.Description | safeHTML}}" />
-<meta itemprop="description" content="{{ .Params.Description | safeHTML}}" />
+{{ if isset .Site.Params "description" }}
+<meta name="description" content="{{ .Site.Params.Description | safeHTML }}" />
+<meta property="og:description" content="{{ .Site.Params.Description | safeHTML}}" />
+<meta itemprop="description" content="{{ .Site.Params.Description | safeHTML}}" />
+{{ else }}
+<meta name="description" content="{{ .Site.Author.bio | safeHTML }}" />
+<meta property="og:description" content="{{ .Site.Author.bio | safeHTML}}" />
+<meta itemprop="description" content="{{ .Site.Author.bio | safeHTML}}" />
+{{ end }}
 <meta property="og:type" content="website" />
 <meta property="og:image" content="https://micro.blog/{{ .Site.Author.username }}/favicon.png" />
 <meta itemprop="image" content="https://micro.blog/{{ .Site.Author.username }}/favicon.png" />
@@ -125,9 +131,11 @@
 {{- end -}}
 
 
-{{ "<!-- CSS Links -->" | safeHTML }}
+{{ "<!-- CSS Links  and Themes-->" | safeHTML }}
 <link rel="stylesheet" href="{{ "css/normalize.css" | relURL }}?{{ .Site.Params.theme_seconds }}" />
 <link rel="stylesheet" href="{{ "css/style.css" | relURL }}?{{ .Site.Params.theme_seconds }}" />
+<meta name="theme-color" content="#5e81ac" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#bf616a" media="(prefers-color-scheme: dark)" />
 {{- if isset .Site.Params "customcss" }}
 <link rel="stylesheet" href="{{ $.Site.BaseURL }}{{ .Site.Params.customCSS }}" />
 {{ end }}

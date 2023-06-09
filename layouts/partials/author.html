@@ -1,16 +1,14 @@
-<details open itemprop="author" itemscope itemtype="https://schema.org/Person" 
-    class="author h-card p-author" role="contentinfo" style="display: none;">
-    <summary itemprop="name" class="p-name">{{ .Site.Author.name }}</summary>
-    <div class="microblog_user" style="display: grid; grid-template-columns: minmax(100px, 1fr) 4fr;">
-        <img itemprop="image" class="u-photo" loading="lazy" src="{{ .Site.Author.avatar }}" style="grid-column: 1; place-self: center;"/>
-        <p class="bio p-note" style="grid-column: 2;">{{ .Site.Author.bio }}</p>
+<aside itemprop="author" itemscope itemtype="https://schema.org/Person" 
+    class="author h-card p-author" 
+    role="contentinfo"
+    style="">
+    <div class="author-image">
+	    <img class="u-photo" loading="lazy" itemprop="image"
+	        src="{{ .Site.Author.avatar }}"
+	        alt="Profile image of {{ .Site.Author.name }}"/>	
+        <p itemprop="name" class="p-name">{{ .Site.Author.name }}</p>
     </div>
-</details>
-
-<div itemprop="author" itemscope itemtype="https://schema.org/Person" 
-    class="author h-card p-author" role="contentinfo" style="display: grid; grid-template-columns: minmax(100px, 1fr) 4fr;">
-    <img itemprop="image" class="u-photo" loading="lazy" src="{{ .Site.Author.avatar }}"
-    	style="grid-column: 1; place-self: center;"/>
-    <p itemprop="name" class="p-name" style="grid-column: 2;">{{ .Site.Author.name }}</p>
-    <p class="bio p-note" style="grid-column: 2;">{{ .Site.Author.bio }}</p>
-</div>
+	<div class="author-bio bio p-note">
+        {{ .Site.Author.bio | safeHTML }}
+    </div>
+</aside>
