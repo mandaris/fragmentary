@@ -1,18 +1,11 @@
 {{ define "main" }}
+{{ "<!-- _default/list.html -->" | safeHTML }}
 {{ if .Title }}
-<h1>{{ .Title }}</h1>
+<div class="[ style-box ]"><h1 class="list-title-header">Category: {{ .Title }}</h1></div>
 {{ end }}
 
-{{ range .Paginator.Pages    }}
-    <article class="h-entry">
-        <header>
-            {{ if .Title }}
-            <h2 class="p-name"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-            {{ end }}
-        </header>
-        {{ .Content }}
-    {{ partial "article-footer.html" . }}
-    </article>
+{{ range .Paginator.Pages }}
+{{ partial "article.html" . }}
 {{ end }}
 
 {{ partial "site-pagination.html" . }}

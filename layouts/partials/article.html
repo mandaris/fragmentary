@@ -1,21 +1,23 @@
 {{- if .Title }}
-<article class="post h-entry hentry">
-<header class="post-header">
-<h1><a href="{{ .Permalink }}" class="p-name">{{ .Title }}</a></h1>
+<article class="[ style-box ] [ h-entry ] [ hentry ] [ post ]"
+  aria-label="{{ .Title }}"
+  itemscope itemtype="https://schema.org/BlogPosting">
+<header class="[ post-header ]">
+<a href="{{ .Permalink }}" class="[ u-url ]"><h1 itemprop="headline" class="p-name">{{ .Title }}</h1></a>
 </header>
 {{ else }}
-<article class="h-entry note-summary-view">
+{{ $niceDate := .Date.Format (default "January 2, 2006 3:04 pm" .Site.Params.date_format) }}
+{{ $ariaLabel :=  printf "MicroPost %s" $niceDate | printf "%s" }}
+<article class="[ style-box ] [ h-entry ] [ hentry ] [ note-summary-view ]"
+  aria-label="{{ $ariaLabel }}"
+  itemscope itemtype="https://schema.org/BlogPosting">
+  <meta itemprop="headline" content="{{ $ariaLabel }}">
 {{ end }}
-<div class="e-content post-body">
+<div class="[ post-body ] [ entry-content ] [ e-content ] "
+  itemprop="articleBody">
 {{ .Content -}}
-{{ if .Params.transcript -}}
-<p>Transcript is here: <a href="{{ .Params.transcript }}" title="Transcript to audio.">click here</a></p>
-{{ end }}
 </div>
 
 {{ partial "article-footer.html" . }}
 
-{{ if .Site.Params.include_conversation }}
-<script type="text/javascript" src="https://micro.blog/conversation.js?url={{ .Permalink }}" defer></script>
-{{ end }}
 </article>

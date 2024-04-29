@@ -1,5 +1,27 @@
 {
-    "version": "1.0.0",
-    "title": "Labarum",
-    "description": "A theme to help me learn how to make themes."
+  "version": "1.3.17",
+  "title": "Labarum",
+  "description": "A theme to help me learn how to make themes that is accessible and enjoyable to read.",
+  "fields": [
+  {
+      "field": "params.showAuthorInfo",
+      "label": "Show Author profile information",
+      "type": "boolean"
+  },
+  {
+      "field": "params.showDebugInfo",
+      "label": "Show debug information on page",
+      "type": "boolean"
+  },
+  {
+      "field": "params.themeDebug",
+      "label": "Generate the debug information",
+      "type": "boolean"
+  },
+  {
+      "field": "params.math",
+      "label": "Allow for LaTex in Markdown using MathJax",
+      "type": "boolean"
+  }
+  ]
 }
