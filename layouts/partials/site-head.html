@@ -108,7 +108,7 @@
 <meta name="supported-color-schemes" content="light dark" />
 <meta name="theme-color" content="#5e81ac" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#bf616a" media="(prefers-color-scheme: dark)" />
-
+{{ partial "og-render.html" . }}
 {{ "<!-- Microblog header begin-->" | safeHTML }}
 {{ partial "microblog_head.html" . }}
 {{ "<!-- Microblog header end -->" | safeHTML }}
